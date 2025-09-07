@@ -1,59 +1,129 @@
-# Introduction to GitHub
+# 🛒 Stock & Billing Management System
 
-<!-- ![](https://github.com/VijayVittal-dev/billing-system/actions/workflows/0-start-exercise.yml/badge.svg) -->
-![](https://github.com/VijayVittal-dev/billing-system/actions/workflows/1-create-a-branch.yml/badge.svg)
-![](https://github.com/VijayVittal-dev/billing-system/actions/workflows/2-commit-a-file.yml/badge.svg)
-![](https://github.com/VijayVittal-dev/billing-system/actions/workflows/3-open-a-pull-request.yml/badge.svg)
-![](https://github.com/VijayVittal-dev/billing-system/actions/workflows/4-merge-your-pull-request.yml/badge.svg)
-
-_Get started using GitHub in less than an hour._
-
-## Welcome
-
-People use GitHub to build some of the most advanced technologies in the world. Whether you’re visualizing data or building a new game, there’s a whole community and set of tools on GitHub that can help you do it even better. GitHub Skills’ “Introduction to GitHub” exercise guides you through everything you need to start contributing in less than an hour.
-
-- **Who is this for**: New developers, new GitHub users, and students.
-- **What you'll learn**: We'll introduce repositories, branches, commits, and pull requests.
-- **What you'll build**: We'll make a short Markdown file you can use as your [profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
-- **Prerequisites**: None. This exercise is a great introduction for your first day on GitHub.
-- **How long**: This exercise takes less than one hour to complete.
-
-In this exercise, you will:
-
-1. Create a branch
-2. Commit a file
-3. Open a pull request
-4. Merge your pull request
-
-### How to start this exercise
-
-1. Right-click **Copy Exercise** and open the link in a new tab.
-
-   <a id="copy-exercise">
-      <img src="https://img.shields.io/badge/📠_Copy_Exercise-AAA" height="25pt"/>
-   </a>
-
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.chttps://github.com/VijayVittal-dev/billing-system/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
-
-3. After your new repository is created, wait about 20 seconds for the exercise to be prepared and buttons updated. You will continue working from your copy of the exercise.
-   - The **Copy Exercise** button will deactivate, changing to gray.
-   - The **Start Exercise** button will activate, changing to green.
-   - You will likely need to refresh the page.
-
-4. Click **Start Exercise**. Follow the step-by-step instructions and feedback will be provided as you progress.
-
-   <a id="start-exercise" href="https://github.com/VijayVittal-dev/billing-system/issues/1">
-      <img src="https://img.shields.io/badge/🚀_Start_Exercise-008000" height="25pt"/>
-   </a>
-
-> [!IMPORTANT]
-> The **Start Exercise** button will activate after copying the repository. You will probably need to refresh the page.
+A simple **C-based Stock and Billing System** that manages items in a store using **hash tables**.
+It allows adding, deleting, and viewing stock, as well as handling a **cart system with billing** (including taxes and discounts).
 
 ---
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+## 📌 Features
 
-&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+* 📦 **Stock Management**
+
+  * Add new items with HSN code, name, quantity, and price
+  * Update quantity if item already exists
+  * Delete items fully or partially from stock
+  * View current stock in a tabular format
+
+* 🛒 **Cart System**
+
+  * Add items to cart using HSN code
+  * Adjust stock automatically when items are added to cart
+  * Generate a **detailed bill** with GST (CGST & SGST) and discount calculations
+  * Save bills to a file (`bill.txt`)
+  * Print generated bills directly from the file
+
+* 🧮 **Billing Features**
+
+  * Taxable amount calculation
+  * CGST @2.5%
+  * SGST @2.5%
+  * Discount @5%
+  * Final amount with summary
+
+---
+
+## 🛠️ Technologies Used
+
+* **C Language**
+* **File Handling** (`bill.txt`)
+* **Hash Table with Linear Probing** for stock storage
+* **Dynamic Memory Allocation** for items
+
+---
+
+## 📂 Project Structure
+
+```bash
+stock-billing-system/
+│── stock_billing.c    # Main source code
+│── bill.txt           # Bill file generated at runtime
+│── README.md          # Documentation
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Compile the program
+
+```bash
+gcc stock_billing.c -o stock_billing
+```
+
+### 2️⃣ Run the program
+
+```bash
+./stock_billing
+```
+
+---
+
+## 📋 Usage Flow
+
+1. **Main Menu Options**
+
+   * Open Cart
+   * Add to Stock
+   * Delete from Stock
+   * View Current Stock
+   * Exit
+
+2. **Cart Options**
+
+   * Add item
+   * Empty the cart
+   * Generate bill
+   * Print bill
+   * Exit
+
+---
+
+## 📊 Sample Bill (bill.txt)
+
+```
+                 EVERyTHING SHOPPING MALL
+Opp. Sony digital, Nakkalgutta, Hanamkonda, Telangana-506345.
+Phone no.: +91 9218199111
+GSTIN: AB2929292Z833K
+PAN No.: A123456DK8K
+----------------------------------------------------------------------------------
+HSN-Code        item-name                 cost-per-item   quantity            cost
+----------------------------------------------------------------------------------
+1234            Soap                              40.0        3.0           120.0
+5678            Shampoo                          120.0        1.0           120.0
+----------------------------------------------------------------------------------
+Taxable Amount                                               4.0           240.0
+CGST @2.5%                                                                6.0
+SGST @2.5%                                                                6.0
+Discount @5%                                                             -12.0
+----------------------------------------------------------------------------------
+Total Amount:                                                            240.0
+----------------------------------------------------------------------------------
+                                  Thank You! Visit Again.
+```
+
+---
+
+## 🔮 Future Enhancements
+
+* Add **persistent database storage** instead of in-memory hash table
+* Add **user authentication** (Admin vs Cashier)
+* Support **multiple carts** and billing history
+* Improve **UI with ncurses** for a more interactive terminal interface
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Your Name**
+

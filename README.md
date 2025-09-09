@@ -125,5 +125,5 @@ Total Amount:                                                            240.0
 
 ## 👨‍💻 Author
 
-Developed by **Your Name**
+Developed by **Vijay Vittal**
 
